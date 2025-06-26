@@ -8,6 +8,9 @@ from fastembed import SparseTextEmbedding, TextEmbedding
 import openai
 from collections import defaultdict
 
+print("Hello from Railway!")
+
+
 # ─── Load environment ─────────────────────────────────────────────
 load_dotenv()
 QDRANT_URL        = os.getenv("QDRANT_CLOUD_URL")
