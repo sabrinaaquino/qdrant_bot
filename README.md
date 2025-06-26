@@ -12,7 +12,7 @@ A Discord bot that answers questions about Qdrant documentation using hybrid sea
 
 1. **Clone and install dependencies:**
     ```bash
-    git clone <your-repo-url>
+    git clone https://github.com/sabrinaaquino/qdrant_bot.git
     cd qdrant-bot
     python3 -m venv venv
     source venv/bin/activate  # On Windows: venv\Scripts\activate
@@ -20,21 +20,21 @@ A Discord bot that answers questions about Qdrant documentation using hybrid sea
     ```
 
 2. **Configure environment:**
-    - Create a `.env` file in the root directory:
-      ```
-      QDRANT_CLOUD_URL=your_qdrant_url
-      QDRANT_CLOUD_API_KEY=your_qdrant_api_key
-      DISCORD_BOT_TOKEN=your_discord_bot_token
-      OPENAI_API_KEY=your_openai_api_key
-      ```
+Create a `.env` file in the root directory:
+    ```
+    QDRANT_CLOUD_URL=your_qdrant_url
+    QDRANT_CLOUD_API_KEY=your_qdrant_api_key
+    DISCORD_BOT_TOKEN=your_discord_bot_token
+    OPENAI_API_KEY=your_openai_api_key
+    ```
 
 ## Usage
 
-- **Ingest documentation:**
+**Ingest documentation:**
     ```bash
     python ingest_data.py
     ```
-- **Start the Discord bot:**
+**Start the Discord bot:**
     ```bash
     python bot.py
     ```
