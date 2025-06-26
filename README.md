@@ -2,15 +2,11 @@
 
 A Discord bot that answers questions about Qdrant documentation using hybrid search (dense + sparse vectors) and OpenAI, powered by a custom-ingested Qdrant collection.
 
----
-
 ## Features
 
 - **Hybrid Search**: Combines dense (BAAI/bge-large-en-v1.5) and sparse (Qdrant/minicoil-v1) embeddings with RRF fusion.
 - **Streaming Ingestion**: Scrapes, chunks, deduplicates, embeds, and uploads Qdrant docs to your Qdrant instance.
 - **Discord Bot**: Answers questions in threads, using OpenAI for responses and remembering thread context.
-
----
 
 ## Setup
 
@@ -32,8 +28,6 @@ A Discord bot that answers questions about Qdrant documentation using hybrid sea
       OPENAI_API_KEY=your_openai_api_key
       ```
 
----
-
 ## Usage
 
 - **Ingest documentation:**
@@ -45,5 +39,4 @@ A Discord bot that answers questions about Qdrant documentation using hybrid sea
     python bot.py
     ```
 
----
 
