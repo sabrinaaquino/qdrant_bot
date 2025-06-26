@@ -8,8 +8,6 @@ from fastembed import SparseTextEmbedding, TextEmbedding
 import openai
 from collections import defaultdict
 
-print("Hello from Railway!")
-
 
 # ─── Load environment ─────────────────────────────────────────────
 load_dotenv()
