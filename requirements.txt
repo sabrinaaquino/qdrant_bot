@@ -1,0 +1,12 @@
+fastembed
+qdrant-client
+discord.py
+python-dotenv
+nest_asyncio
+nltk
+requests
+beautifulsoup4
+llama-index-core
+llama-index-embeddings-fastembed
+trafilatura
+openai
