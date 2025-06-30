@@ -24,7 +24,7 @@ sparse_model = SparseTextEmbedding(model_name="Qdrant/minicoil-v1")
 openai_client = openai.OpenAI(api_key=OPENAI_API_KEY)
 
 # ─── Hybrid Search ────────────────────────────────────────────────
-def hybrid_search(query_text, limit=40):
+def hybrid_search(query_text, limit=80):
     try:
         dense_vector = list(dense_model.embed([query_text]))[0]
         sparse_embeddings = list(sparse_model.query_embed([query_text]))
@@ -54,7 +54,7 @@ def hybrid_search(query_text, limit=40):
         return []
 
 # ─── Format context for LLM ───────────────────────────────────────
-def extract_context(points, max_results=30):
+def extract_context(points, max_results=35):
     """
     Extract relevant content from the retrieved Qdrant points.
     Limit to top results to prevent token overflow.
@@ -104,14 +104,15 @@ def add_to_thread(thread_id, role, content):
 
 
 # ─── OpenAI Completion ────────────────────────────────────────────
-def generate_response(context, question):
+def generate_response(context, question, thread_context=None):
     prompt = f"""You are a highly knowledgeable technical assistant specializing in providing accurate,
             concise, and well-structured answers based on the retrieved documentation.
             Your primary goal is to help users understand and navigate the documentation
-            efficiently. If the retrieved content does not contain the answer, state that
-            explicitly and avoid making assumptions. Provide step-by-step instructions, code examples,
+            efficiently. Provide step-by-step instructions, code examples,
             and always share links when applicable. Reference the specific section of the retrieved documentation when possible.
-            Do not generate information beyond the retrieved knowledge."""
+            If the documentation does not state the answer explicitly, 
+            but you recognize the pattern from trusted internal knowledge, you may explain the behavior. 
+            Make it clear that this is not part of the official docs, and label it accordingly."""
 
 
     user_prompt = (
@@ -123,7 +124,7 @@ def generate_response(context, question):
     
     try:
         response = openai_client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": prompt},
                 {"role": "user", "content": user_prompt},
